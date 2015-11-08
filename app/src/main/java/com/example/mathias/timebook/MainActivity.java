@@ -8,13 +8,22 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+
+    Button calc_button;
+    EditText first_textview;
+    EditText second_textview;
+    TextView result_label;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.testlayout);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -26,6 +35,31 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        Initiate();
+    }
+
+    private void Initiate(){
+
+        calc_button = (Button) findViewById(R.id.calc_btn);
+        first_textview = (EditText) findViewById(R.id.indatatext1);
+        second_textview = (EditText) findViewById(R.id.indatatext2);
+        result_label = (TextView) findViewById(R.id.resultLabel);
+
+    }
+
+    private void Calculate(){
+
+        result_label.setText(Integer.parseInt(first_textview.getText().toString()) +
+                Integer.parseInt(second_textview.getText().toString()));
+
+    }
+
+
+    public void OnCalculateClick(View v) {
+
+        Calculate();
+
     }
 
     @Override
