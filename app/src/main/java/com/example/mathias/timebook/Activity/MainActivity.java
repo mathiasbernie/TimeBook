@@ -1,9 +1,11 @@
-package com.example.mathias.timebook;
+package com.example.mathias.timebook.Activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.example.mathias.timebook.R;
 
 public class MainActivity extends AppCompatActivity {
 

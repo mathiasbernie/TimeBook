@@ -1,4 +1,4 @@
-package com.example.mathias.timebook;
+package com.example.mathias.timebook.BookingModel;
 
 /**
  * Created by Niklas on 2015-11-09.

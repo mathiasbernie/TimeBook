@@ -1,4 +1,4 @@
-package com.example.mathias.timebook;
+package com.example.mathias.timebook.BookingModel;
 
 import java.util.Date;
 

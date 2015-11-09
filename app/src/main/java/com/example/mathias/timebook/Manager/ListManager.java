@@ -1,4 +1,4 @@
-package com.example.mathias.timebook;
+package com.example.mathias.timebook.Manager;
 
 import org.w3c.dom.ls.LSException;
 
