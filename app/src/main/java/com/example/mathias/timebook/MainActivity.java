@@ -40,8 +40,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void Calculate(){
 
-        result_label.setText(Integer.parseInt(first_textview.getText().toString()) +
-                Integer.parseInt(second_textview.getText().toString()));
+        int firstvalue = Integer.parseInt(first_textview.getText().toString());
+        int secondvalue = Integer.parseInt(second_textview.getText().toString());
+        int sum = firstvalue + secondvalue;
+        result_label.setText(Integer.toString(sum));
+
 
     }
 
