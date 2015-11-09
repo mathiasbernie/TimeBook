@@ -4,6 +4,8 @@ import java.util.Date;
 
 /**
  * Created by Niklas on 2015-11-09.
+ *
+ * This class is responsible for Booking objects.
  */
 public class Booking {
 
