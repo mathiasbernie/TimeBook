@@ -10,5 +10,4 @@ public abstract class DatabaseHandler<T> {
     abstract public boolean Update(T obj);
     abstract public T Get(T obj);
     abstract public boolean Delete(T obj);
-    abstract public boolean DeleteIndex(int index);
 }

@@ -30,10 +30,4 @@ public class DatabaseBookingHandler extends DatabaseHandler<Booking> {
     public boolean Delete(Booking obj) {
         return false;
     }
-
-    @Override
-    public boolean DeleteIndex(int index) {
-        return false;
-    }
-
 }
