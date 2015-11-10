@@ -28,6 +28,14 @@ public class Booking {
     public Booking(){
     }
 
+    public Booking(String description, String starttime, String endtime, Customer customer, String activity_owner){
+        this.description = description;
+        this.starttime = starttime;
+        this.endtime = endtime;
+        this.customer = customer;
+        this.activity_owner = activity_owner;
+    }
+
 
     // Getters and Setters
 

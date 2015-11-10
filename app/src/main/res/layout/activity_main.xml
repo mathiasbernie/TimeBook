@@ -9,25 +9,10 @@
         android:layout_height="match_parent"
         android:layout_gravity="center_horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="+"
-            android:id="@+id/textView"
-            android:layout_gravity="center_horizontal" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:id="@+id/resultLabel"
-            android:layout_gravity="center_horizontal" />
-
-        <CalendarView
+        <ListView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/calendarView"
+            android:layout_height="wrap_content"
+            android:id="@+id/bookingsListview"
             android:layout_gravity="center_horizontal" />
 
     </LinearLayout>

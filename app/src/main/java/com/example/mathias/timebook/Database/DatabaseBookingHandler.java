@@ -45,6 +45,8 @@ public class DatabaseBookingHandler extends DatabaseHandler<Booking> {
     //Version of DB
     public static final int DATABASE_VERSION = 1;
 
+
+
     public DatabaseBookingHandler(Context ctx){
         this.ctx = ctx;
         dbHelper = new DatabaseHelper(ctx);
@@ -65,8 +67,8 @@ public class DatabaseBookingHandler extends DatabaseHandler<Booking> {
     @Override
     public boolean Add(Booking obj) {
 
+        db = dbHelper.getWritableDatabase();
         ContentValues cont = new ContentValues();
-
         Customer tempCust = obj.getCustomer();
 
         cont.put(CUSTOMER_NAME, tempCust.getName());
@@ -101,11 +103,11 @@ public class DatabaseBookingHandler extends DatabaseHandler<Booking> {
     public ArrayList<Booking> GetBookingList(){
 
         ArrayList<Booking> tempList = new ArrayList<Booking>();
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        db = dbHelper.getWritableDatabase();
 
         String select_query = "SELECT BookingID, Description, Start_time, End_time, Activity_Owner, +" +
                 "Name AS Customer_name, Phone_number FROM " +TABLE_BOOKING+ " JOIN "+
-                TABLE_CUSTOMER + " ON BookingID = CustomerID";
+                TABLE_CUSTOMER + " ON "+TABLE_BOOKING+".BookingID = "+TABLE_CUSTOMER+".CustomerID";
 
         Cursor cursor = db.rawQuery(select_query, null);
 
