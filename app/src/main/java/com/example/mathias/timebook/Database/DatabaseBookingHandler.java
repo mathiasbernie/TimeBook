@@ -2,6 +2,7 @@ package com.example.mathias.timebook.Database;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -9,7 +10,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 import com.example.mathias.timebook.BookingModel.Booking;
 import com.example.mathias.timebook.BookingModel.Customer;
 
+import java.sql.Date;
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 
 /**
@@ -37,7 +41,7 @@ public class DatabaseBookingHandler extends DatabaseHandler<Booking> {
 
     //Creating Tables in DB
     private static final String BOOKING_TABLE_CREATE = "CREATE TABLE Booking(BookingID int primary key, Description varchar(200), "+
-            "DATETIME Start_time, DATETIME End_time, Activity_Owner varchar(30), CustomerID int);";
+            "Start_time varchar(50), End_time varchar(50), Activity_Owner varchar(30), CustomerID int);";
     private static final String CUSTOMER_TABLE_CREATE = "CREATE TABLE Customer(CustomerID int primary key, Name varchar(50), "+
     "Phone_number varchar(50));";
 
@@ -77,8 +81,8 @@ public class DatabaseBookingHandler extends DatabaseHandler<Booking> {
         cont = new ContentValues();
 
         cont.put(BOOKING_DESCRIPTION, obj.getDescription());
-        cont.put(BOOKING_START_TIME, obj.getStarttime().toString());
-        cont.put(BOOKING_END_TIME, obj.getEndtime().toString());
+        cont.put(BOOKING_START_TIME, obj.getStarttime());
+        cont.put(BOOKING_END_TIME, obj.getEndtime());
         cont.put(BOOKING_ACTIVITY_OWNER, obj.getActivity_owner());
         db.insertOrThrow(TABLE_BOOKING, null, cont);
         return true;
@@ -90,7 +94,7 @@ public class DatabaseBookingHandler extends DatabaseHandler<Booking> {
     }
 
     @Override
-    public Booking Get(Booking obj) {
+    public Booking Get(String indata) {
         return null;
     }
 
@@ -99,8 +103,41 @@ public class DatabaseBookingHandler extends DatabaseHandler<Booking> {
         return false;
     }
 
+    public ArrayList<Booking> GetBookingList(){
 
+        ArrayList<Booking> tempList = new ArrayList<Booking>();
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
 
+        String select_query = "SELECT BookingID, Description, Start_time, End_time, Activity_Owner, +" +
+                "Name AS Customer_name, Phone_number FROM " +TABLE_BOOKING+ " JOIN "+
+                TABLE_CUSTOMER + " ON BookingID = CustomerID";
+
+        Cursor cursor = db.rawQuery(select_query, null);
+
+        if(cursor.moveToFirst()){
+            do{
+                Booking tempBooking = new Booking();
+                Customer tempCustomer = new Customer();
+                //Adding data to Booking object
+                tempBooking.setId(Integer.parseInt(cursor.getString(0)));
+                tempBooking.setDescription(cursor.getString(1));
+                tempBooking.setStarttime(cursor.getString(2));
+                tempBooking.setEndtime(cursor.getString(3));
+                tempBooking.setActivity_owner(cursor.getString(4));
+
+                //Adding data to Customer object
+                tempCustomer.setName(cursor.getString(5));
+                tempCustomer.setPhone_number(cursor.getString(6));
+
+                //Add Customer object to Booking object
+                tempBooking.setCustomer(tempCustomer);
+
+                //Add Booking to list.
+                tempList.add(tempBooking);
+            } while (cursor.moveToNext());
+        }
+        return tempList;
+    }
 
     /*
     * DatabaseHelper class

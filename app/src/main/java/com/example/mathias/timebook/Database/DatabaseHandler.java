@@ -8,6 +8,6 @@ public abstract class DatabaseHandler<T> {
 
     abstract public boolean Add(T obj);
     abstract public boolean Update(T obj);
-    abstract public T Get(T obj);
+    abstract public T Get(String indata);
     abstract public boolean Delete(T obj);
 }

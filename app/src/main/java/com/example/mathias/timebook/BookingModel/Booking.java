@@ -20,8 +20,8 @@ public class Booking {
     }
 
     private String description;
-    private Date starttime;
-    private Date endtime;
+    private String starttime;
+    private String endtime;
     private Customer customer;
     private String activity_owner;
 
@@ -47,19 +47,19 @@ public class Booking {
         this.description = description;
     }
 
-    public Date getStarttime() {
+    public String getStarttime() {
         return starttime;
     }
 
-    public void setStarttime(Date starttime) {
+    public void setStarttime(String starttime) {
         this.starttime = starttime;
     }
 
-    public Date getEndtime() {
+    public String getEndtime() {
         return endtime;
     }
 
-    public void setEndtime(Date endtime) {
+    public void setEndtime(String endtime) {
         this.endtime = endtime;
     }
 
