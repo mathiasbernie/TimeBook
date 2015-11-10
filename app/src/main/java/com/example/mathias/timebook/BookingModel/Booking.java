@@ -10,6 +10,15 @@ import java.util.Date;
 public class Booking {
 
     private int id;
+
+    public String getActivity_owner() {
+        return activity_owner;
+    }
+
+    public void setActivity_owner(String activity_owner) {
+        this.activity_owner = activity_owner;
+    }
+
     private String description;
     private Date starttime;
     private Date endtime;
