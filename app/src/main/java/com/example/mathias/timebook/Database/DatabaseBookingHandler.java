@@ -1,5 +1,9 @@
 package com.example.mathias.timebook.Database;
 
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+
 import com.example.mathias.timebook.BookingModel.Booking;
 
 /**
@@ -8,6 +12,8 @@ import com.example.mathias.timebook.BookingModel.Booking;
  * Booking objects.
  */
 public class DatabaseBookingHandler extends DatabaseHandler<Booking> {
+
+
 
     public DatabaseBookingHandler(){}
 

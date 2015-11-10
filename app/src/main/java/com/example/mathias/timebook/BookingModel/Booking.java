@@ -14,9 +14,10 @@ public class Booking {
     private Date starttime;
     private Date endtime;
     private Customer customer;
-    private ActivityOwner activity_owner;
+    private String activity_owner;
 
-    public Booking(){}
+    public Booking(){
+    }
 
 
     // Getters and Setters
@@ -59,13 +60,5 @@ public class Booking {
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
-    }
-
-    public ActivityOwner getActivity_owner() {
-        return activity_owner;
-    }
-
-    public void setActivity_owner(ActivityOwner activity_owner) {
-        this.activity_owner = activity_owner;
     }
 }
